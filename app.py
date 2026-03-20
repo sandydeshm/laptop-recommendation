@@ -1,0 +1,22 @@
+from flask import Flask, render_template, request
+import pandas as pd
+
+app = Flask(__name__)
+
+data = pd.read_csv("laptops.csv")
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/recommend', methods=['POST'])
+def recommend():
+    budget = int(request.form['budget'])
+    usage = request.form['usage']
+
+    result = data[(data['price'] <= budget) & (data['usage'] == usage)]
+
+    return render_template('result.html', laptops=result.to_dict(orient='records'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
