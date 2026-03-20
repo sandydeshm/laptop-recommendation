@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+body {font-family: Arial; background:#f5f5f5; text-align:center;}
+.card {
+  background:white; padding:20px; margin:20px auto;
+  width:300px; border-radius:10px; box-shadow:0 0 10px gray;
+}
+button {
+  background:#ff9900; color:white; border:none;
+  padding:10px; border-radius:5px;
+}
+</style>
+</head>
+
 <body>
 
-<h2>Recommended Laptops:</h2>
+<h1>🔥 Best Laptops For You</h1>
 
-{% if laptops %}
+{% for laptop in laptops %}
+<div class="card">
+  <h2>{{ laptop.name }}</h2>
+  <p>💰 ₹{{ laptop.price }}</p>
+  <p>⚡ {{ laptop.ram }}GB RAM</p>
 
-    {% for laptop in laptops %}
-        <p>
-            {{ laptop.name }} - ₹{{ laptop.price }} - {{ laptop.ram }}GB RAM
-        </p>
-    {% endfor %}
+  <!-- BUY BUTTON -->
+  <a href="https://www.amazon.in?&linkCode=ll2&tag=sandesh0d7-21&linkId=1b5c03a5848d7b0e5e1bde4dbec1dccb&ref_=as_li_ss_tl">
+    <button>Buy Now 🛒</button>
+  </a>
 
-{% else %}
-
-    <h3>No laptops found 😢</h3>
-
-{% endif %}
+</div>
+{% endfor %}
 
 </body>
 </html>
