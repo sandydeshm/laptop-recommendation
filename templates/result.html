@@ -1,1 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
 
+<h2>Recommended Laptops:</h2>
+
+{% if laptops %}
+
+    {% for laptop in laptops %}
+        <p>
+            {{ laptop.name }} - ₹{{ laptop.price }} - {{ laptop.ram }}GB RAM
+        </p>
+    {% endfor %}
+
+{% else %}
+
+    <h3>No laptops found 😢</h3>
+
+{% endif %}
+
+</body>
+</html>
