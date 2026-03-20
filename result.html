@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Recommended Laptops:</h2>
+
+{% for laptop in laptops %}
+    <p>{{ laptop.name }} - ₹{{ laptop.price }}</p>
+{% endfor %}
+
+</body>
+</html>
